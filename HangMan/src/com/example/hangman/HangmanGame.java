@@ -89,6 +89,8 @@ public class HangmanGame {
 		return currentString;
 	}
 	
-	
+	public int getNumRemaining(){
+		return getNumRemaining;
+	}
 
 }
