@@ -23,6 +23,8 @@
         android:layout_height="wrap_content"
         android:text="Set Word"
         android:layout_alignRight="@id/enteredWordEditText"
-        android:layout_below="@id/enteredWordEditText"/>
+        android:layout_below="@id/enteredWordEditText"
+        android:onClick="setWord"
+        />
     
 </RelativeLayout>
