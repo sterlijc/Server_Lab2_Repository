@@ -1,15 +1,28 @@
+/*
+  Programmer 1: Daniel Griffin
+  Programmer 2: Jordan Ross
+*/
 package com.example.hangman;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
-public class MainActivity extends Activity {
+/**
+ * <h2>Overview</h2>
+ * 
+ * <p></p>
+ * 
+ * @author Daniel Griffin
+ * @author Jordan Ross
+ * 
+ * */
+public class WordEntryActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.word_entry_layout);
 	}
 
 	@Override

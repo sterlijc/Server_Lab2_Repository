@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+	<TextView android:id="@+id/outputTextView"
+	    android:inputType="textCapCharacters"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:text="\n\n_ _ _ _ _ _ "
+	    android:layout_alignParentTop="true"
+	    android:textSize="50dip"
+	    android:gravity="center_horizontal"
+	    />
+	
+	<EditText android:id="@+id/guessEditText"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:hint="A"
+	    android:textSize="50dip"
+	    android:layout_centerVertical="true"
+	    android:layout_alignLeft="@id/outputTextView"
+	    />
+    
+	<Button android:id="@+id/guessButton"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="Guess"
+	    android:textSize="50dip"
+	    android:layout_centerVertical="true"
+	    android:layout_alignRight="@id/outputTextView"
+	    />
+	
+	<TextView android:id="@+id/endGameMessageTextView"
+	    android:layout_width="fill_parent"
+	    android:layout_height="180dip"
+	    android:layout_alignParentBottom="true"
+	    android:layout_centerHorizontal="true"/>
+    
+</RelativeLayout>
