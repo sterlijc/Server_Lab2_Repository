@@ -45,6 +45,7 @@ public class WordEntryActivity extends Activity {
 		
 		// Check the number of characters in the word
 		String word = wordEditText.getText().toString();
+		
 		if (word.length() > 6)
 		{
 			Toast.makeText(wordEditText.getContext(), "Enter a word less than 6 characters!", Toast.LENGTH_SHORT).show();

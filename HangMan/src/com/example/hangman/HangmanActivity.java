@@ -6,6 +6,7 @@
 package com.example.hangman;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -40,12 +41,13 @@ public class HangmanActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//Load the GUI.
+		setContentView(R.layout.hangman_activity_layout);
 		
 		//Get references.
 		outputText = (TextView)findViewById(R.id.outputTextView);
 		guessEditText = (EditText)findViewById(R.id.guessEditText);
 		guessButton = (Button)findViewById(R.id.guessButton);
-		endGameMessageTextView = (TextView)findViewById(R.id.endGameMessageTextView);
 		replayButton = (Button)findViewById(R.id.replayButton);
 		hangmanTextView = (TextView)findViewById(R.id.hangmanTextView);
 		
@@ -55,8 +57,11 @@ public class HangmanActivity extends Activity {
 		//Create a HangmanObject and pass it the game word.
 		game = new HangmanGame(word);
 		
+		//Get the current string and set it to the outputTextView.
+		outputText.setText(game.getCurrentHangmanString());
+		
 		//Set the replayButton OnClickListener.
-		replayButton.setOnClickListener(new OnClickListener() {
+		replayButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				//If this button is clicked, finish this activity and return to the "WordEntryActivity".
@@ -65,7 +70,7 @@ public class HangmanActivity extends Activity {
 		});
 		
 		//Set the guessButotn OnClickListener.
-		guessButton.setOnClickListener(new OnClickListener() {
+		guessButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -86,15 +91,26 @@ public class HangmanActivity extends Activity {
 				//Check whether or not the game has ended.
 				int status = game.getGameStatus();
 				
+				int temp = 0;
+				
 				if(status == HangmanGame.USER_WON){
-					endGameMessageTextView.setText("Winner!");
+					//Set the output text.
+					outputText.setText(outputString);
+					//Send winner signal.
+					hangmanTextView.setBackgroundColor(Color.BLUE);
+					hangmanTextView.setText("Winner!!!");
+					//Enable replay button.
 					replayButton.setEnabled(true);
+					//Disable the guess button.
 					guessButton.setEnabled(false);
 				}else if(status == HangmanGame.USER_LOST){
-					hangmanTextView.setText("HANGMAN");
-					endGameMessageTextView.setText("Looser...");
+					//Set the hangman text view.
+					hangmanTextView.setBackgroundColor(Color.RED);
+					hangmanTextView.setText("Looser!!!");
+					//Enable replay button.
 					replayButton.setEnabled(true);
-					replayButton.setEnabled(false);
+					//Disable guess button.
+					guessButton.setEnabled(false);
 				}else if(status == HangmanGame.IN_PROGRESS){
 					int numTriesLeft = game.getNumRemaining();
 					
@@ -113,6 +129,8 @@ public class HangmanActivity extends Activity {
 					}else if(numTriesLeft == 1){
 						hangmanTextView.setText("HANGMA ");
 					}
+					
+					outputText.setText(outputString);
 					
 				}
 				

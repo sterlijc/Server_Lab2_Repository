@@ -24,23 +24,36 @@ public class HangmanGame {
 	
 	//Private Members
 	private String solutionString;
-	private int getNumRemaining;
-	private String currentString;
+	private int getNumRemaining ;
+	private String currentString = " ";
 	
 	/**Default fill constructor.*/
 	public HangmanGame(String word) {
-		solutionString = word;
+		solutionString = word.toLowerCase();
+		
+/*		if(word.length() < 6){
+			String tempString = "";
+			
+			for(int i = 0; i< 6 - word.length(); i++){
+				tempString += "*";
+			}
+			
+			solutionString.concat(tempString);
+		}
+*/	
 		getNumRemaining = 7;
-		currentString = " _ _ _ _ _ _";
+		for(int i = 0; i< word.length(); i++){
+			currentString += "_ " ;
+		}
 	}
 	
 	/*--------------------------------------------
 	  					Public Methods
 	  --------------------------------------------*/
 	public int getGameStatus(){
-		String tempCurrentString = currentString;
+		String tempCurrentString = new String(currentString);
 
-		if(tempCurrentString.replace(" ", "").equals(solutionString) == true){
+		if(tempCurrentString.replace(" ", "").replace("_", "").equals(solutionString) == true){
 			return USER_WON;
 		}else if(getNumRemaining == 0){
 			return USER_LOST;
@@ -53,6 +66,7 @@ public class HangmanGame {
 	}
 	
 	public String tryGuess(String guess){
+		guess = guess.toLowerCase();
 		String tempCurrentString = "";
 		int index = 0; 
 		boolean guessRight = false;
@@ -63,12 +77,15 @@ public class HangmanGame {
 				//Solution string char not equal to guess char, so continue.
 				continue;
 			}else{
+				//Clear tempCurrentString in case there is a repeated letter.
+				tempCurrentString = "";
+				
 				//Set the flag to true.
 				guessRight = true;
 				
 				//Loop through the current string to build a new string with the guess char added.
 				for(int i = 0; i<currentString.length(); i++){
-					if(i == ((2*index) + 1)){
+					if(i == ((2*j) + 1)){
 						tempCurrentString += guess;
 					}else if(i % 2 == 0){
 						tempCurrentString += " ";
@@ -91,6 +108,10 @@ public class HangmanGame {
 	
 	public int getNumRemaining(){
 		return getNumRemaining;
+	}
+	
+	public String getCurrentHangmanString(){
+		return currentString;
 	}
 
 }
