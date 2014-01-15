@@ -1,6 +1,7 @@
 /*
   Programmer 1: Daniel Griffin
   Programmer 2: Jordan Ross
+  Completed: 1/14/2014
 */
 
 package com.example.hangman;
@@ -19,7 +20,19 @@ import android.widget.Toast;
 /**
  * <h2>Overview</h2>
  * 
- * <p></p>
+ * <p>This class holds the main functionality of the Hangman App. It shows the 
+ * user how many chances he has left, the previously found letters, and supplies a method for 
+ * inputing guesses. When the user has won, a "Winner!!!" string will appear in the top TextView. 
+ * When the user has lost, a "Looser..." string will appear in the top TextView.</p>
+ * 
+ * <h3>Testing Summary</h3>
+ * <p>This class has been tested using the word "look", "college", and a random sequence fo numbers. 
+ * In all cases, this class accepted a string (and correctly parsed it by using only the first character 
+ * of any string input) and output the correct hangman string. When the user had finally guessed the 
+ * correct word, the "Winner!!!" string was correctly output. Also, by inputing "Loccccccc" for the case 
+ * where "look" was the correct word, the program was shown to accurately output the "Looser" string, and 
+ * enable the button letting the user try again. It also disabled the button used to submit guesses, thus 
+ * ensuring no errors would occur due to guesses input after the game was over.</p>
  * 
  * @author Daniel Griffin
  * @author Jordan Ross
@@ -28,16 +41,22 @@ import android.widget.Toast;
 public class HangmanActivity extends Activity {
 
 	//Private Members
+	/**Reference to the HangmanGame object used to perform the game.*/
 	private HangmanGame game;
 	
 	//Private UI Members
+	/**Reference to the View holding the word that is trying to be guessed.*/
 	private TextView outputText;
+	/**Reference to the View used to input guesses.*/
 	private EditText guessEditText;
+	/**Reference to the Button used to submit a guess.*/
 	private Button guessButton;
+	/**Reference to a button used to indicate the user wants to play again.*/
 	private Button replayButton;
-	private TextView endGameMessageTextView;
+	/**Reference to the View showing the "HANGMAN" letters indicating the chances left for a guess.*/
 	private TextView hangmanTextView;
 	
+	/**Description: Method initializes this Activity, gets GUI references, and defines the "OnClickListeners" for the buttons.*/
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

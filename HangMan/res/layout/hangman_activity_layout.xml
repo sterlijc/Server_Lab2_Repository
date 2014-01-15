@@ -51,11 +51,5 @@
 	    android:layout_alignRight="@id/guessButton"
 	    android:enabled="false"
 	    />
-	
-	<TextView android:id="@+id/endGameMessageTextView"
-	    android:layout_width="fill_parent"
-	    android:layout_height="180dip"
-	    android:layout_alignParentBottom="true"
-	    android:layout_centerHorizontal="true"/>
     
 </RelativeLayout>
