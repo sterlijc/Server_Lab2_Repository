@@ -26,13 +26,30 @@ import android.widget.Toast;
  * When the user has lost, a "Looser..." string will appear in the top TextView.</p>
  * 
  * <h3>Testing Summary</h3>
- * <p>This class has been tested using the word "look", "college", and a random sequence fo numbers. 
- * In all cases, this class accepted a string (and correctly parsed it by using only the first character 
- * of any string input) and output the correct hangman string. When the user had finally guessed the 
- * correct word, the "Winner!!!" string was correctly output. Also, by inputing "Loccccccc" for the case 
- * where "look" was the correct word, the program was shown to accurately output the "Looser" string, and 
- * enable the button letting the user try again. It also disabled the button used to submit guesses, thus 
- * ensuring no errors would occur due to guesses input after the game was over.</p>
+ * <h4>Testing Strategy</h4>
+ * <p>The strategy that was used for testing the Hangman Activity was the test of all boundary conditions
+ * and to ensure that each branch in the logic was taken at least once so that every line was covered. No
+ * unit tests were written but instead we manually tested the application by playing the game and observing
+ * the responses.</p>
+ * <h4>Test Cases</h4>
+ * <ul>
+ * 	<li>Press "Guess" after not entering in a character. -- PASSED -- Observed that the appropriate
+ * 		notification and did not process the empty character.</li>
+ * 	<li>Press "Guess" after entering in a string of more than 1 character. -- PASSED -- Observed 
+ * 		appropriate notification and did not accept the guess.</li>
+ * 	<li>Entered an "H" when the word was "Hello" and pressed guess. -- PASSED -- Observed that the
+ * 		guess was accepted and was displayed in the word as well as no letter in the "hangman" string
+ * 		was added".</li>
+ * 	<li>Entered an "E" when the word was "Hello" and pressed guess. -- PASSED -- Accepted the guess
+ * 		correctly even though the case did not match.</li>
+ * 	<li>Entered an "l" when the word was "Hello" and pressed guess. -- PASSED -- Accepted the guess
+ *		and placed the "l" character in the two locations.</li>
+ *	<li>Entered in the last correct guess in word and pressed guess. -- PASSED -- The message "Winner!!!"
+ *		was displayed as it should and the guess button was disabled and the replay button was enabled.
+ *	<li>Entered in all incorrect guesses. -- PASSED -- The next character in the message "HANGMAN" 
+ *		was displayed each time the guess was incorrect. When the seventh guess was incorrect it displayed
+ *		"Looser" and disabled the guess button and enabled the replay button.
+ * </ul>
  * 
  * @author Daniel Griffin
  * @author Jordan Ross
@@ -98,7 +115,14 @@ public class HangmanActivity extends Activity {
 				
 				//If no text, make toast and return.
 				if(guess.length() == 0){
-					Toast.makeText(guessEditText.getContext(), "Enter guess", Toast.LENGTH_SHORT);
+					Toast.makeText(guessEditText.getContext(), "Enter guess", Toast.LENGTH_SHORT).show();
+					return;
+				}
+				
+				//If the text is more than one character, make a toat and return.
+				if (guess.length() > 1)
+				{
+					Toast.makeText(guessEditText.getContext(), "You can only guess 1 character at a time!", Toast.LENGTH_SHORT).show();
 					return;
 				}
 				

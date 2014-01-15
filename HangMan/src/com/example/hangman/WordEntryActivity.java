@@ -20,10 +20,20 @@ import android.widget.Toast;
  * 15 characters. However, the HangmanGame class can use a string with any number of characters.</p>
  * 
  * <h3>Testing Summary</h3>
- * 
- * <p>This class was tested with the boundary conditions of no input, input with over 15 characters, and 
- * input with characters 0< C <= 15. In the boundary conditions, the program created a Toast notifying the 
- * user. In the correct range, the string was correctly sent to another activity.</p>
+ * <h4>Testing Strategy</h4>
+ * <p>The strategy that was used for testing the WordEntry Activity was the test of all boundary conditions
+ * and to ensure that each branch in the logic was taken at least once so that every line was covered. No
+ * unit tests were written but instead we manually tested the application by entering in a variety of inputs 
+ * and observing the responses.</p>
+ * <h4>Test Cases</h4>
+ * <ul>
+ * 	<li>Do not enter a word and press "Set Word". -- PASSED -- Observed that the appropriate
+ * 		notification and did not process the empty string.</li>
+ * 	<li>Press "Set Word" after entering in a string of more than 15 characters. -- PASSED -- Observed 
+ * 		appropriate notification and did not accept the word.</li>
+ * 	<li>Entered in an acceptable word such as "Hello". -- PASSED -- The next activity received the correct
+ * 		word and was set as the solution.</li>
+ * </ul>
  * 
  * @author Daniel Griffin
  * @author Jordan Ross
