@@ -46,11 +46,13 @@ public class WordEntryActivity extends Activity {
 		// Check the number of characters in the word
 		String word = wordEditText.getText().toString();
 		
-		if (word.length() > 6)
+		//Limit the word length to less than 15 characters.
+		if (word.length() > 15)
 		{
-			Toast.makeText(wordEditText.getContext(), "Enter a word less than 6 characters!", Toast.LENGTH_SHORT).show();
+			Toast.makeText(wordEditText.getContext(), "Enter a word less than 15 characters!", Toast.LENGTH_SHORT).show();
 			return;
 		}
+		//Limit the word length to being greater than 0.
 		else if (word.length() == 0)
 		{
 			Toast.makeText(wordEditText.getContext(), "Enter a word!", Toast.LENGTH_SHORT).show();
@@ -58,8 +60,9 @@ public class WordEntryActivity extends Activity {
 		}
 		else
 		{
+			//Put the string in an intent.
 			intent.putExtra(EXTRA_MESSAGE, word);
-			
+			//Start the HangmanActivity.
 			startActivity(intent);
 		}
 			

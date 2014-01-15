@@ -104,6 +104,8 @@ public class HangmanActivity extends Activity {
 					//Disable the guess button.
 					guessButton.setEnabled(false);
 				}else if(status == HangmanGame.USER_LOST){
+					//Set the output text with the correct answer.
+					outputText.setText("Ans: " + game.getSolutionString());
 					//Set the hangman text view.
 					hangmanTextView.setBackgroundColor(Color.RED);
 					hangmanTextView.setText("Looser!!!");

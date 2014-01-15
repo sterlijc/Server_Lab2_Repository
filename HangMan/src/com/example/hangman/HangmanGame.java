@@ -16,7 +16,7 @@ package com.example.hangman;
  * 
  * */
 public class HangmanGame {
-
+	
 	//Public Class Members.
 	public static final int USER_WON = 0;
 	public static final int USER_LOST = 1;
@@ -114,4 +114,8 @@ public class HangmanGame {
 		return currentString;
 	}
 
+	public String getSolutionString(){
+		return solutionString;
+	}
+	
 }
