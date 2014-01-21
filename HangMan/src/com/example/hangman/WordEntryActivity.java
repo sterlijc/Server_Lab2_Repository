@@ -74,9 +74,9 @@ public class WordEntryActivity extends Activity {
 		String word = wordEditText.getText().toString();
 		
 		//Limit the word length to less than 15 characters.
-		if (word.length() > 15)
+		if (word.length() > 12)
 		{
-			Toast.makeText(wordEditText.getContext(), "Enter a word less than 15 characters!", Toast.LENGTH_SHORT).show();
+			Toast.makeText(wordEditText.getContext(), "Enter a word less than 12 characters!", Toast.LENGTH_SHORT).show();
 			return;
 		}
 		//Limit the word length to being greater than 0.

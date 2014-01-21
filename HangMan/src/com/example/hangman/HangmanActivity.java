@@ -9,8 +9,8 @@ package com.example.hangman;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -89,7 +89,7 @@ public class HangmanActivity extends Activity {
 		
 		//Get the hangman game word
 		String word = getIntent().getStringExtra(WordEntryActivity.EXTRA_MESSAGE);
-		
+			
 		//Create a HangmanObject and pass it the game word.
 		game = new HangmanGame(word);
 		
@@ -176,7 +176,6 @@ public class HangmanActivity extends Activity {
 					}
 					
 					outputText.setText(outputString);
-					
 				}
 				
 			}

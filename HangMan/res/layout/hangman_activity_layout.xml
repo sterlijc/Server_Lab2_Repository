@@ -16,12 +16,15 @@
     
 	<TextView android:id="@+id/outputTextView"
 	    android:inputType="textCapCharacters"
-	    android:layout_width="fill_parent"
+	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:text=" _ _ _ _ _ _ "
 	    android:layout_below="@id/hangmanTextView"
 	    android:textSize="50dip"
 	    android:gravity="center_horizontal"
+	    android:scrollHorizontally="true"
+	    android:scrollbars="horizontal"
+	    android:singleLine="true"
 	    />
 	
 	<EditText android:id="@+id/guessEditText"
